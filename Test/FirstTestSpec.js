@@ -36,19 +36,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var protractor_1 = require("protractor");
+var HomePage_1 = require("./pages/HomePage");
 describe("first part login and finding", function () {
     //Globally 
+    var homePage = new HomePage_1.HomePage();
     it("login succesfully", function () { return __awaiter(_this, void 0, void 0, function () {
-        var a;
         return __generator(this, function (_a) {
-            protractor_1.browser.get("http://www.facebook.com");
-            a = 12;
-            expect(a).toBe(12);
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: 
+                //Open Browser
+                return [4 /*yield*/, homePage.OpenBrowser("http://www.facebook.com")];
+                case 1:
+                    //Open Browser
+                    _a.sent();
+                    //login
+                    return [4 /*yield*/, homePage.Login()];
+                case 2:
+                    //login
+                    _a.sent();
+                    return [2 /*return*/];
+            }
         });
     }); });
     it("without any expectation", function () {
+        var a = 12;
+        expect(a).toBe(12);
     });
 });
 //# sourceMappingURL=FirstTestSpec.js.map

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//Base page
 var protractor_1 = require("protractor");
 var IdentificationType;
 (function (IdentificationType) {

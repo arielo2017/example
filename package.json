@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "@types/jasmine": "^3.3.9",
+    "@types/node": "^11.13.8",
     "jasminewd2": "^2.2.0"
   },
   "devDependencies": {
