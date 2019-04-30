@@ -62,7 +62,7 @@ var Locators = {
     },
     loginbtn: {
         type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.Id],
-        value: "u_0_2"
+        value: "loginbutton"
     }
 };
 var HomePage = /** @class */ (function (_super) {
@@ -73,9 +73,9 @@ var HomePage = /** @class */ (function (_super) {
         //username=this.ElementLocator(Locators.username);
         _this.username = _this.ElementLocator(Locators.username);
         //password
-        _this.password = _this.ElementLocator(Locators.password).element(protractor_1.by.id("pass"));
+        _this.password = _this.ElementLocator(Locators.password);
         //login btn
-        _this.loginbtn = _this.ElementLocator(Locators.loginbtn);
+        _this.loginbtn = _this.ElementLocator(Locators.loginbtn).element(protractor_1.by.tagName("input"));
         return _this;
     }
     //Open browser

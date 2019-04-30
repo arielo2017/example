@@ -19,7 +19,7 @@ const Locators={
     loginbtn:
     {
         type:IdentificationType[IdentificationType.Id],
-        value:"u_0_2"
+        value:"loginbutton"
     }
 }
 
@@ -29,9 +29,9 @@ export class HomePage extends BasePage{
     //username=this.ElementLocator(Locators.username);
     username=this.ElementLocator(Locators.username)
     //password
-    password=this.ElementLocator(Locators.password).element(by.id("pass"));
+    password=this.ElementLocator(Locators.password);
      //login btn
-    loginbtn=this.ElementLocator(Locators.loginbtn);
+    loginbtn=this.ElementLocator(Locators.loginbtn).element(by.tagName("input"));
 
 
     //Open browser

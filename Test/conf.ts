@@ -9,6 +9,9 @@ export let config: Config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
 
   baseUrl:"http://localhost:8808/",
+ 
+  directConnect:true,
+
   
   
 
