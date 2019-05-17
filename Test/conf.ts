@@ -10,7 +10,7 @@ export let config: Config = {
 
   baseUrl:"http://localhost:8808/",
  
-  directConnect:true,
+  //directConnect:true,
 
   
   

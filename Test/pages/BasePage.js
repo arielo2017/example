@@ -11,6 +11,7 @@ var IdentificationType;
     IdentificationType[IdentificationType["LinkTextm"] = 4] = "LinkTextm";
     IdentificationType[IdentificationType["Js"] = 5] = "Js";
     IdentificationType[IdentificationType["PartialLinkText"] = 6] = "PartialLinkText";
+    IdentificationType[IdentificationType["tagName"] = 7] = "tagName";
 })(IdentificationType = exports.IdentificationType || (exports.IdentificationType = {}));
 var BasePage = /** @class */ (function () {
     function BasePage() {
@@ -26,6 +27,8 @@ var BasePage = /** @class */ (function () {
             case IdentificationType[IdentificationType.Xpath]:
                 return protractor_1.element(protractor_1.by.xpath(obj.value));
             case IdentificationType[IdentificationType.Js]:
+                return protractor_1.element(protractor_1.by.js(obj.value));
+            case IdentificationType[IdentificationType.tagName]:
                 return protractor_1.element(protractor_1.by.js(obj.value));
             default:
                 break;

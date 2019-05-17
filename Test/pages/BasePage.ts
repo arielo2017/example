@@ -8,7 +8,8 @@ export enum IdentificationType {
     Xpath,
     LinkTextm,
     Js,
-    PartialLinkText
+    PartialLinkText,
+    tagName
 }
 
 export class BasePage {
@@ -24,6 +25,8 @@ export class BasePage {
             case IdentificationType[IdentificationType.Xpath]:
                 return element(by.xpath(obj.value));
             case IdentificationType[IdentificationType.Js]:
+                return element(by.js(obj.value));
+                case IdentificationType[IdentificationType.tagName]:
                 return element(by.js(obj.value));
             default:
             break;

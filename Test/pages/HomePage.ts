@@ -41,12 +41,10 @@ export class HomePage extends BasePage{
     }
 
     
-   async GetAllHeadings()
+   async Search(search:string)
     {
-        /*await this.headings.getText().then((text)=>
-        {
-            console.log("The heading is :"+text);
-        })*/
+        console.log("search this :"+search);
+        
     }
 
     async Login()

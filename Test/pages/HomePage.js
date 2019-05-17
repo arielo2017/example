@@ -93,9 +93,10 @@ var HomePage = /** @class */ (function (_super) {
             });
         });
     };
-    HomePage.prototype.GetAllHeadings = function () {
+    HomePage.prototype.Search = function (search) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
+                console.log("search this :" + search);
                 return [2 /*return*/];
             });
         });
