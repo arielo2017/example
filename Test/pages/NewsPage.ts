@@ -1,38 +1,34 @@
-import { browser, element, by, protractor, $$,$, WebElement } from "protractor";
+import { browser, element, by, protractor, $$,$ } from "protractor";
 import { IdentificationType, BasePage } from "./BasePage";
+
 const Locators={
-    searchinput:
-    {
-        type:IdentificationType[IdentificationType.Css],
-        value:"div.innerWrap"
-    }
+   //input search
+   inputsearch:
+   {
+       type:IdentificationType[IdentificationType.Css],
+       value:"._1frb"
+   },
+   //link
+   linksearched:
+   {
+       type:IdentificationType[IdentificationType.PartialLinkText],
+       value:"Jinetes Colombianos'"
+   }
 }
+
 
 export class NewsPage extends BasePage{
 
-    //search
-    divsearchinput=this.ElementLocator(Locators.searchinput);
-    
-   async Search(search)
-    {
-        console.log("search this :"+search);
-        this.divsearchinput.all(by.tagName("input")).then((elems)=>
-        {
-            console.log(elems.length);
-        })
-      
-      //let listas: Array<WebElement>= this.searchinput.findElements(by.tagName("input"));
+    inputsearch=this.ElementLocator(Locators.inputsearch);
 
-      /*  this.searchinput.findElements(by.tagName("input")).then(function(items)
-        {
-            console.log("collection");
-        }asdasd
-        /*await this.headings.getText().then((text)=>
-        {
-            console.log("The heading is :"+text);
-        })*/
-    
+    async search(text:string){
+        this.inputsearch.sendKeys(text,protractor.Key.ENTER);   
     }
 
-    
+ /*   async clickLink()
+    {
+        this.ElementLocator(Locators.linksearched).click();
+    }*/
+
+            
 }

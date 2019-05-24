@@ -34,6 +34,24 @@ var BasePage = /** @class */ (function () {
                 break;
         }
     };
+    BasePage.prototype.ReturnColection = function (obj) {
+        switch (obj.type) {
+            case IdentificationType[IdentificationType.Css]:
+                return protractor_1.element.all(protractor_1.by.css(obj.value));
+            case IdentificationType[IdentificationType.className]:
+                return protractor_1.element.all(protractor_1.by.className(obj.value));
+            case IdentificationType[IdentificationType.Id]:
+                return protractor_1.element.all(protractor_1.by.id(obj.value));
+            case IdentificationType[IdentificationType.Xpath]:
+                return protractor_1.element.all(protractor_1.by.xpath(obj.value));
+            case IdentificationType[IdentificationType.Js]:
+                return protractor_1.element.all(protractor_1.by.js(obj.value));
+            case IdentificationType[IdentificationType.tagName]:
+                return protractor_1.element.all(protractor_1.by.js(obj.value));
+            default:
+                break;
+        }
+    };
     return BasePage;
 }());
 exports.BasePage = BasePage;

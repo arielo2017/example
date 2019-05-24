@@ -1,17 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -48,40 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var protractor_1 = require("protractor");
-var BasePage_1 = require("./BasePage");
-var Locators = {
-    //input search
-    inputsearch: {
-        type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.Css],
-        value: "._1frb"
-    },
-    //link
-    linksearched: {
-        type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.PartialLinkText],
-        value: "Jinetes Colombianos'"
+var Utils = /** @class */ (function () {
+    function Utils() {
     }
-};
-var NewsPage = /** @class */ (function (_super) {
-    __extends(NewsPage, _super);
-    function NewsPage() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.inputsearch = _this.ElementLocator(Locators.inputsearch);
-        return _this;
-        /*   async clickLink()
-           {
-               this.ElementLocator(Locators.linksearched).click();
-           }*/
-    }
-    NewsPage.prototype.search = function (text) {
+    Utils.prototype.compareDates = function (date1, date2) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                this.inputsearch.sendKeys(text, protractor_1.protractor.Key.ENTER);
                 return [2 /*return*/];
             });
         });
     };
-    return NewsPage;
-}(BasePage_1.BasePage));
-exports.NewsPage = NewsPage;
-//# sourceMappingURL=NewsPage.js.map
+    return Utils;
+}());
+exports.Utils = Utils;
+//# sourceMappingURL=Utils.js.map

@@ -83,32 +83,34 @@ var HomePage = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        protractor_1.browser.waitForAngularEnabled(false);
-                        return [4 /*yield*/, protractor_1.browser.get(url)];
+                    case 0: return [4 /*yield*/, protractor_1.browser.waitForAngularEnabled(false)];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, protractor_1.browser.get(url)];
+                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    HomePage.prototype.Search = function (search) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                console.log("search this :" + search);
-                return [2 /*return*/];
-            });
-        });
-    };
     HomePage.prototype.Login = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                console.log("Login");
-                this.username.sendKeys("kuleherman81@gmail.com");
-                this.password.sendKeys("arielo1985");
-                this.loginbtn.click();
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        console.log("Login");
+                        return [4 /*yield*/, this.username.sendKeys("kuleherman81@gmail.com")];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.password.sendKeys("arielo1985")];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.loginbtn.click()];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
             });
         });
     };

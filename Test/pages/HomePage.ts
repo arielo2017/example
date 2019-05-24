@@ -27,33 +27,29 @@ export class HomePage extends BasePage{
 
     // username
     //username=this.ElementLocator(Locators.username);
-    username=this.ElementLocator(Locators.username)
+    username=this.ElementLocator(Locators.username);
     //password
     password=this.ElementLocator(Locators.password);
      //login btn
     loginbtn=this.ElementLocator(Locators.loginbtn).element(by.tagName("input"));
 
 
+
     //Open browser
     async OpenBrowser(url:string){
-        browser.waitForAngularEnabled(false);
+        await browser.waitForAngularEnabled(false);
         await browser.get(url);
-    }
-
-    
-   async Search(search:string)
-    {
-        console.log("search this :"+search);
-        
     }
 
     async Login()
     {
         console.log("Login");
-        this.username.sendKeys("kuleherman81@gmail.com");
-        this.password.sendKeys("arielo1985");
-        this.loginbtn.click();
+        await this.username.sendKeys("kuleherman81@gmail.com");
+        await this.password.sendKeys("arielo1985");
+        await this.loginbtn.click();
     }
+
+   
     
     
 }

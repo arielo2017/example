@@ -51,37 +51,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
 var BasePage_1 = require("./BasePage");
 var Locators = {
-    //input search
-    inputsearch: {
+    //link posts
+    dates: {
         type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.Css],
-        value: "._1frb"
-    },
-    //link
-    linksearched: {
-        type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.PartialLinkText],
-        value: "Jinetes Colombianos'"
+        value: ".timestampContent"
     }
 };
-var NewsPage = /** @class */ (function (_super) {
-    __extends(NewsPage, _super);
-    function NewsPage() {
+var JinetesPage = /** @class */ (function (_super) {
+    __extends(JinetesPage, _super);
+    function JinetesPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.inputsearch = _this.ElementLocator(Locators.inputsearch);
+        _this.dates = _this.ElementLocator(Locators.dates);
         return _this;
-        /*   async clickLink()
-           {
-               this.ElementLocator(Locators.linksearched).click();
-           }*/
     }
-    NewsPage.prototype.search = function (text) {
+    JinetesPage.prototype.getPosts = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var dates, splitted, datesplit;
             return __generator(this, function (_a) {
-                this.inputsearch.sendKeys(text, protractor_1.protractor.Key.ENTER);
+                dates = protractor_1.browser.$$(".timestampContent");
+                dates.getText().then(function (text) {
+                    console.log("The input is:" + text);
+                    var datesplit = text.toString();
+                    var splitted = datesplit.split(",");
+                    console.log(splitted);
+                    if (splitted[1] == text) {
+                        console.log("equals:" + text);
+                    }
+                });
+                /*    let items = dates.map(function(elm, index) {
+                        return {
+                          index: index,
+                          text: elm.getText(),
+                          class: elm.getAttribute('class')
+                        };
+                      });*/
+                dates.count().then(function (count) {
+                    console.log("count:" + count);
+                });
                 return [2 /*return*/];
             });
         });
     };
-    return NewsPage;
+    return JinetesPage;
 }(BasePage_1.BasePage));
-exports.NewsPage = NewsPage;
-//# sourceMappingURL=NewsPage.js.map
+exports.JinetesPage = JinetesPage;
+//# sourceMappingURL=JinetesPage.js.map

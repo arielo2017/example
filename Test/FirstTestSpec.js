@@ -37,11 +37,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var HomePage_1 = require("./pages/HomePage");
-var NewsPage_1 = require("./pages/NewsPage");
+var protractor_1 = require("protractor");
+var JinetesPage_1 = require("./pages/JinetesPage");
 describe("first part login and finding", function () {
     //Globally 
     var homePage = new HomePage_1.HomePage();
-    var newsPage = new NewsPage_1.NewsPage();
+    var jinetePage = new JinetesPage_1.JinetesPage();
+    // var newsPage = new NewsPage();
     it("login succesfully", function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -56,11 +58,17 @@ describe("first part login and finding", function () {
                 case 2:
                     //login
                     _a.sent();
-                    //news page
-                    return [4 /*yield*/, newsPage.Search("jinetes Colombianos")];
+                    //search
+                    return [4 /*yield*/, homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/")];
                 case 3:
-                    //news page
+                    //search
                     _a.sent();
+                    //click posts
+                    return [4 /*yield*/, jinetePage.getPosts()];
+                case 4:
+                    //click posts
+                    _a.sent();
+                    protractor_1.browser.sleep(5000);
                     return [2 /*return*/];
             }
         });
