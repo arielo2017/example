@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var HomePage_1 = require("./pages/HomePage");
-var protractor_1 = require("protractor");
 var JinetesPage_1 = require("./pages/JinetesPage");
 describe("first part login and finding", function () {
     //Globally 
@@ -64,11 +63,10 @@ describe("first part login and finding", function () {
                     //search
                     _a.sent();
                     //click posts
-                    return [4 /*yield*/, jinetePage.getPosts()];
+                    return [4 /*yield*/, jinetePage.getTodayPosts()];
                 case 4:
                     //click posts
                     _a.sent();
-                    protractor_1.browser.sleep(5000);
                     return [2 /*return*/];
             }
         });

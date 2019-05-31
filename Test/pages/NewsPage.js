@@ -68,10 +68,6 @@ var NewsPage = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.inputsearch = _this.ElementLocator(Locators.inputsearch);
         return _this;
-        /*   async clickLink()
-           {
-               this.ElementLocator(Locators.linksearched).click();
-           }*/
     }
     NewsPage.prototype.search = function (text) {
         return __awaiter(this, void 0, void 0, function () {

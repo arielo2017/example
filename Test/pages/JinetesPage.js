@@ -50,6 +50,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
 var BasePage_1 = require("./BasePage");
+var Posts_1 = require("../../DTO/Posts");
 var Locators = {
     //link posts
     dates: {
@@ -62,36 +63,62 @@ var JinetesPage = /** @class */ (function (_super) {
     function JinetesPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.dates = _this.ElementLocator(Locators.dates);
+        _this.colpostsArray = [];
         return _this;
     }
     JinetesPage.prototype.getPosts = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var dates, splitted, datesplit;
+            var dates, colposts, splitted, datesplit;
             return __generator(this, function (_a) {
                 dates = protractor_1.browser.$$(".timestampContent");
-                dates.getText().then(function (text) {
-                    console.log("The input is:" + text);
-                    var datesplit = text.toString();
-                    var splitted = datesplit.split(",");
-                    console.log(splitted);
-                    if (splitted[1] == text) {
-                        console.log("equals:" + text);
-                    }
-                });
-                /*    let items = dates.map(function(elm, index) {
-                        return {
-                          index: index,
-                          text: elm.getText(),
-                          class: elm.getAttribute('class')
-                        };
-                      });*/
-                dates.count().then(function (count) {
-                    console.log("count:" + count);
+                colposts = protractor_1.browser.$$("._5pcr.userContentWrapper");
+                colposts.then(function (elements) {
+                    colposts.get(0).$$(".fsm.fwn.fcg").get(0).element(protractor_1.by.tagName("a")).getWebElement().then(function (ela) {
+                        console.log("tag:" + ela.getText());
+                        ela.click();
+                    });
                 });
                 return [2 /*return*/];
             });
         });
     };
+    JinetesPage.prototype.getTodayPosts = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var colposts, datetext, newpost;
+            var _this = this;
+            return __generator(this, function (_a) {
+                colposts = protractor_1.browser.$$("._5pcr.userContentWrapper");
+                colposts.then(function (elements) {
+                    _this.newpost = new Posts_1.Post("", "");
+                    elements.forEach(function (ele) {
+                        ele.$(".fsm.fwn.fcg").$(".timestampContent").getText().then(function (text) {
+                            datetext = text;
+                        });
+                        //console.log(text)
+                        /*function(text){
+                            console.log("this:"+this);
+                            console.log("time:"+text);
+                            let post:Post=new Post(text,"");
+                            colpostsArray.push(post);
+                        });
+                        */
+                        ele.$("[data-testid='post_message']").element(protractor_1.by.tagName("p")).getText().then(function (text) {
+                            newpost = text;
+                        });
+                        console.log("******", _this.colpostsArray);
+                    });
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
+    JinetesPage.prototype.scrollTo = function (scrollToElement) {
+        var wd = protractor_1.browser.driver;
+        return protractor_1.browser.scrollToElement.getLocation().then(function (loc) {
+            return wd.executeScript('window.scrollTo(0,arguments[0]);', loc.y);
+        });
+    };
+    ;
     return JinetesPage;
 }(BasePage_1.BasePage));
 exports.JinetesPage = JinetesPage;

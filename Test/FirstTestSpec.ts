@@ -17,8 +17,8 @@ describe("first part login and finding", () => {
           //search
           await homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/");
          //click posts
-          await jinetePage.getPosts();
-          browser.sleep(5000);
+          await jinetePage.getTodayPosts();
+
       })
 
    

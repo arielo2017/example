@@ -38,7 +38,9 @@ export class HomePage extends BasePage{
     //Open browser
     async OpenBrowser(url:string){
         await browser.waitForAngularEnabled(false);
+        await browser.driver.manage().window().setSize(1600, 1000); 
         await browser.get(url);
+
     }
 
     async Login()

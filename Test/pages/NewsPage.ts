@@ -24,11 +24,5 @@ export class NewsPage extends BasePage{
     async search(text:string){
         this.inputsearch.sendKeys(text,protractor.Key.ENTER);   
     }
-
- /*   async clickLink()
-    {
-        this.ElementLocator(Locators.linksearched).click();
-    }*/
-
             
 }

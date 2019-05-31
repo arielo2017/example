@@ -86,8 +86,11 @@ var HomePage = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, protractor_1.browser.waitForAngularEnabled(false)];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, protractor_1.browser.get(url)];
+                        return [4 /*yield*/, protractor_1.browser.driver.manage().window().setSize(1600, 1000)];
                     case 2:
+                        _a.sent();
+                        return [4 /*yield*/, protractor_1.browser.get(url)];
+                    case 3:
                         _a.sent();
                         return [2 /*return*/];
                 }
