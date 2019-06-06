@@ -17,9 +17,13 @@ const Locators={
 export class JinetesPage extends BasePage{
   
     dates=this.ElementLocator(Locators.dates);  
+   // colposts=element.all(by.css("._5pcr.userContentWrapper")).$$("[data-testid='post_message']");
+    datestext=element.all(by.css("._5pcr.userContentWrapper"));
 
-    colpostsArray: Post[] = [];
-    newpost:Post;
+   
+    datetext_;
+    newpost:any;
+
    
     async getPosts()
     {
@@ -42,42 +46,35 @@ export class JinetesPage extends BasePage{
         
     }
 
-    async getTodayPosts()
+    async  getTodayPosts()
     {
-        var colposts=browser.$$("._5pcr.userContentWrapper");
-        var datetext:any;
-        var newpost:any;
-        colposts.then(elements=> {
-         
-            this.newpost=new Post("","");
-            elements.forEach(ele => {
-                
-                ele.$(".fsm.fwn.fcg").$(".timestampContent").getText().then((text)=>{
-                    
-                    datetext=text;
-                 
-                    
-                });
-                //console.log(text)
-                    /*function(text){
-                        console.log("this:"+this);
-                        console.log("time:"+text);
-                        let post:Post=new Post(text,"");
-                        colpostsArray.push(post);
-                    });
-                    */
+        var coldivs=element.all(by.css("._5pcr.userContentWrapper"));
+        
+        let postcreated:Post;
+        let colpostsArray: Post[] = [];
+        let postarray;
 
-              ele.$("[data-testid='post_message']").element(by.tagName("p")).getText().then(text=>
-                {
-                    newpost=text;
-                     
-                });
-              
-                console.log("******",this.colpostsArray);
-            });
+
+        var tempObject=[];
+        var posttemp;
+
+        colpostsArray= await  this.datestext.map(async function(elm, index) {
+            return{
+                datepost:elm.$(".fsm.fwn.fcg").element(by.css(".timestampContent")).getText(),
+                post:elm.all(by.css("[data-testid='post_message']")).all(by.tagName("p")).getText()
+             };
             
-           });    
-    }
+        });
+           
+        
+        colpostsArray.forEach(element => {
+            console.log("date:"+element.datepost);
+            console.log("post:"+element.post);
+        });
+        
+        return colpostsArray;
+     }
+      
 
     scrollTo(scrollToElement) {
         var wd = browser.driver;

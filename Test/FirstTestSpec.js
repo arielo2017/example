@@ -57,16 +57,23 @@ describe("first part login and finding", function () {
                 case 2:
                     //login
                     _a.sent();
-                    //search
-                    return [4 /*yield*/, homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/")];
-                case 3:
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it("return posts", function () { return __awaiter(_this, void 0, void 0, function () {
+        var coleccion;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: 
+                //search
+                return [4 /*yield*/, homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/")];
+                case 1:
                     //search
                     _a.sent();
-                    //click posts
                     return [4 /*yield*/, jinetePage.getTodayPosts()];
-                case 4:
-                    //click posts
-                    _a.sent();
+                case 2:
+                    coleccion = _a.sent();
                     return [2 /*return*/];
             }
         });

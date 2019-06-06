@@ -2,6 +2,7 @@ import { HomePage } from "./pages/HomePage";
 import { NewsPage } from "./pages/NewsPage";
 import { browser } from "protractor";
 import { JinetesPage } from "./pages/JinetesPage";
+import { async } from "q";
 
 describe("first part login and finding", () => {
 
@@ -14,14 +15,18 @@ describe("first part login and finding", () => {
           await homePage.OpenBrowser("http://www.facebook.com");
           //login
           await homePage.Login();
-          //search
-          await homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/");
-         //click posts
-          await jinetePage.getTodayPosts();
-
+         
       })
 
-   
+      it("return posts",async()=>{
+         //search
+         await homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/");
+         //click posts
+         var coleccion= await jinetePage.getTodayPosts();
+
+      });
+
+      
 
 
 });

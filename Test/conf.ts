@@ -13,7 +13,6 @@ export let config: Config = {
   //directConnect:true,
 
   
-  
 
   // You could set no globals to true to avoid jQuery '$' and protractor '$'
   // collisions on the global namespace.
