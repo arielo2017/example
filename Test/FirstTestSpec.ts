@@ -11,7 +11,10 @@ describe("first part login and finding", () => {
     var jinetePage = new JinetesPage();
    // var newsPage = new NewsPage();
     it("login succesfully", async () => {
-          //Open Browser
+          
+          //read json
+          await homePage.ReadDataFromJson();
+         //Open Browser
           await homePage.OpenBrowser("http://www.facebook.com");
           //login
           await homePage.Login();
@@ -26,7 +29,9 @@ describe("first part login and finding", () => {
 
       });
 
-      
+      it("send posts", async () => {
+        
+    })
 
 
 });

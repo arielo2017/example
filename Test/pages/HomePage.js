@@ -50,6 +50,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
 var BasePage_1 = require("./BasePage");
+var ts_data_json_1 = require("ts.data.json");
 var Locators = {
     username: {
         type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.Id],
@@ -65,12 +66,16 @@ var Locators = {
         value: "loginbutton"
     }
 };
+var postoread = ts_data_json_1.JsonDecoder.object({
+    LastUpdate: ts_data_json_1.JsonDecoder.string,
+    Post: ts_data_json_1.JsonDecoder.string
+}, 'User');
+var json = JSON.parse("./data.json");
 var HomePage = /** @class */ (function (_super) {
     __extends(HomePage, _super);
     function HomePage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         // username
-        //username=this.ElementLocator(Locators.username);
         _this.username = _this.ElementLocator(Locators.username);
         //password
         _this.password = _this.ElementLocator(Locators.password);
@@ -78,6 +83,20 @@ var HomePage = /** @class */ (function (_super) {
         _this.loginbtn = _this.ElementLocator(Locators.loginbtn).element(protractor_1.by.tagName("input"));
         return _this;
     }
+    HomePage.prototype.ReadDataFromJson = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                postoread.decodePromise(json)
+                    .then(function (value) {
+                    console.log(value);
+                })
+                    .catch(function (error) {
+                    console.log(error);
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
     //Open browser
     HomePage.prototype.OpenBrowser = function (url) {
         return __awaiter(this, void 0, void 0, function () {

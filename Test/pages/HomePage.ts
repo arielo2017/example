@@ -1,5 +1,9 @@
 import { browser, element, by, protractor, $$,$ } from "protractor";
 import { IdentificationType, BasePage } from "./BasePage";
+import { JsonUtil } from "../../utils/JsonUtil";
+import { post } from "selenium-webdriver/http";
+
+import { JsonDecoder } from 'ts.data.json';
 
 const Locators={
 
@@ -23,16 +27,37 @@ const Locators={
     }
 }
 
-export class HomePage extends BasePage{
+const postoread = JsonDecoder.object<DataPost>(
+    {
+        LastUpdate: JsonDecoder.string,
+        Post: JsonDecoder.string
+    },
+    'User'
+  );
 
+  const json = JSON.parse("./data.json") ;
+
+
+export class HomePage extends BasePage{
+    
     // username
-    //username=this.ElementLocator(Locators.username);
     username=this.ElementLocator(Locators.username);
     //password
     password=this.ElementLocator(Locators.password);
      //login btn
     loginbtn=this.ElementLocator(Locators.loginbtn).element(by.tagName("input"));
 
+    async ReadDataFromJson() {
+       
+        postoread.decodePromise(json)
+        .then(value => {
+            console.log(value);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+    
 
 
     //Open browser
@@ -49,9 +74,18 @@ export class HomePage extends BasePage{
         await this.username.sendKeys("kuleherman81@gmail.com");
         await this.password.sendKeys("arielo1985");
         await this.loginbtn.click();
-    }
-
-   
-    
-    
+    }    
 }
+
+interface DataPost
+{
+    
+    LastUpdate:any, 
+    Post:string;
+
+}
+
+export interface PostsObjects {
+    posts: DataPost[];
+}
+

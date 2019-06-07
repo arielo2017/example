@@ -47,14 +47,19 @@ describe("first part login and finding", function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: 
-                //Open Browser
-                return [4 /*yield*/, homePage.OpenBrowser("http://www.facebook.com")];
+                //read json
+                return [4 /*yield*/, homePage.ReadDataFromJson()];
                 case 1:
+                    //read json
+                    _a.sent();
+                    //Open Browser
+                    return [4 /*yield*/, homePage.OpenBrowser("http://www.facebook.com")];
+                case 2:
                     //Open Browser
                     _a.sent();
                     //login
                     return [4 /*yield*/, homePage.Login()];
-                case 2:
+                case 3:
                     //login
                     _a.sent();
                     return [2 /*return*/];
@@ -76,6 +81,11 @@ describe("first part login and finding", function () {
                     coleccion = _a.sent();
                     return [2 /*return*/];
             }
+        });
+    }); });
+    it("send posts", function () { return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/];
         });
     }); });
 });
