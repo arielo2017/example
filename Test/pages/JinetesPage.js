@@ -64,6 +64,7 @@ var JinetesPage = /** @class */ (function (_super) {
         _this.dates = _this.ElementLocator(Locators.dates);
         // colposts=element.all(by.css("._5pcr.userContentWrapper")).$$("[data-testid='post_message']");
         _this.datestext = protractor_1.element.all(protractor_1.by.css("._5pcr.userContentWrapper"));
+        _this.colpostsArray = [];
         return _this;
     }
     JinetesPage.prototype.getPosts = function () {
@@ -84,13 +85,13 @@ var JinetesPage = /** @class */ (function (_super) {
     };
     JinetesPage.prototype.getTodayPosts = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var coldivs, postcreated, colpostsArray, postarray, tempObject, posttemp;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var coldivs, postcreated, postarray, tempObject, posttemp, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
                         coldivs = protractor_1.element.all(protractor_1.by.css("._5pcr.userContentWrapper"));
-                        colpostsArray = [];
                         tempObject = [];
+                        _a = this;
                         return [4 /*yield*/, this.datestext.map(function (elm, index) {
                                 return __awaiter(this, void 0, void 0, function () {
                                     return __generator(this, function (_a) {
@@ -102,23 +103,16 @@ var JinetesPage = /** @class */ (function (_super) {
                                 });
                             })];
                     case 1:
-                        colpostsArray = _a.sent();
-                        colpostsArray.forEach(function (element) {
+                        _a.colpostsArray = _b.sent();
+                        this.colpostsArray.forEach(function (element) {
                             console.log("date:" + element.datepost);
                             console.log("post:" + element.post);
                         });
-                        return [2 /*return*/, colpostsArray];
+                        return [2 /*return*/, this.colpostsArray];
                 }
             });
         });
     };
-    JinetesPage.prototype.scrollTo = function (scrollToElement) {
-        var wd = protractor_1.browser.driver;
-        return protractor_1.browser.scrollToElement.getLocation().then(function (loc) {
-            return wd.executeScript('window.scrollTo(0,arguments[0]);', loc.y);
-        });
-    };
-    ;
     return JinetesPage;
 }(BasePage_1.BasePage));
 exports.JinetesPage = JinetesPage;

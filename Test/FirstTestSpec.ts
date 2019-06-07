@@ -26,12 +26,17 @@ describe("first part login and finding", () => {
          await homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/");
          //click posts
          var coleccion= await jinetePage.getTodayPosts();
-
+         expect(coleccion.length).toBeGreaterThan(0);
       });
 
-      it("send posts", async () => {
+
+      it("send posts to json ", async () => {
         
-    })
+      })
+
+      it("update posts to json ", async () => {
+        
+    });
 
 
 });

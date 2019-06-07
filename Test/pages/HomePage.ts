@@ -27,15 +27,8 @@ const Locators={
     }
 }
 
-const postoread = JsonDecoder.object<DataPost>(
-    {
-        LastUpdate: JsonDecoder.string,
-        Post: JsonDecoder.string
-    },
-    'User'
-  );
 
-  const json = JSON.parse("./data.json") ;
+const json = require('load-json-file');
 
 
 export class HomePage extends BasePage{
@@ -48,17 +41,14 @@ export class HomePage extends BasePage{
     loginbtn=this.ElementLocator(Locators.loginbtn).element(by.tagName("input"));
 
     async ReadDataFromJson() {
-       
-        postoread.decodePromise(json)
-        .then(value => {
-            console.log(value);
-        })
-        .catch(error => {
-            console.log(error);
+        let variable=await json("./datapost.json").then(x => {
+           return x;
         });
+        console.log("----------------------------Current Posts-----------------------------");
+        for(let post of variable.posts){
+            console.log(post);
+        }
     }
-    
-
 
     //Open browser
     async OpenBrowser(url:string){
@@ -75,17 +65,5 @@ export class HomePage extends BasePage{
         await this.password.sendKeys("arielo1985");
         await this.loginbtn.click();
     }    
-}
-
-interface DataPost
-{
-    
-    LastUpdate:any, 
-    Post:string;
-
-}
-
-export interface PostsObjects {
-    posts: DataPost[];
 }
 

@@ -79,11 +79,17 @@ describe("first part login and finding", function () {
                     return [4 /*yield*/, jinetePage.getTodayPosts()];
                 case 2:
                     coleccion = _a.sent();
+                    expect(coleccion.length).toBeGreaterThan(0);
                     return [2 /*return*/];
             }
         });
     }); });
-    it("send posts", function () { return __awaiter(_this, void 0, void 0, function () {
+    it("send posts to json ", function () { return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/];
+        });
+    }); });
+    it("update posts to json ", function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             return [2 /*return*/];
         });

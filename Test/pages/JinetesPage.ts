@@ -20,10 +20,7 @@ export class JinetesPage extends BasePage{
    // colposts=element.all(by.css("._5pcr.userContentWrapper")).$$("[data-testid='post_message']");
     datestext=element.all(by.css("._5pcr.userContentWrapper"));
 
-   
-    datetext_;
-    newpost:any;
-
+    colpostsArray: Post[] = [];
    
     async getPosts()
     {
@@ -51,14 +48,13 @@ export class JinetesPage extends BasePage{
         var coldivs=element.all(by.css("._5pcr.userContentWrapper"));
         
         let postcreated:Post;
-        let colpostsArray: Post[] = [];
+        
         let postarray;
-
 
         var tempObject=[];
         var posttemp;
 
-        colpostsArray= await  this.datestext.map(async function(elm, index) {
+        this.colpostsArray= await  this.datestext.map(async function(elm, index) {
             return{
                 datepost:elm.$(".fsm.fwn.fcg").element(by.css(".timestampContent")).getText(),
                 post:elm.all(by.css("[data-testid='post_message']")).all(by.tagName("p")).getText()
@@ -66,22 +62,13 @@ export class JinetesPage extends BasePage{
             
         });
            
-        
-        colpostsArray.forEach(element => {
+        this.colpostsArray.forEach(element => {
             console.log("date:"+element.datepost);
             console.log("post:"+element.post);
         });
         
-        return colpostsArray;
+        return this.colpostsArray;
      }
       
-
-    scrollTo(scrollToElement) {
-        var wd = browser.driver;
-        return browser.scrollToElement.getLocation().then(function (loc) {
-            return wd.executeScript('window.scrollTo(0,arguments[0]);', loc.y);
-        });
-    };
-
     
 }

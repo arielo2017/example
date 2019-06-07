@@ -50,7 +50,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
 var BasePage_1 = require("./BasePage");
-var ts_data_json_1 = require("ts.data.json");
 var Locators = {
     username: {
         type: BasePage_1.IdentificationType[BasePage_1.IdentificationType.Id],
@@ -66,11 +65,7 @@ var Locators = {
         value: "loginbutton"
     }
 };
-var postoread = ts_data_json_1.JsonDecoder.object({
-    LastUpdate: ts_data_json_1.JsonDecoder.string,
-    Post: ts_data_json_1.JsonDecoder.string
-}, 'User');
-var json = JSON.parse("./data.json");
+var json = require('load-json-file');
 var HomePage = /** @class */ (function (_super) {
     __extends(HomePage, _super);
     function HomePage() {
@@ -85,15 +80,21 @@ var HomePage = /** @class */ (function (_super) {
     }
     HomePage.prototype.ReadDataFromJson = function () {
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                postoread.decodePromise(json)
-                    .then(function (value) {
-                    console.log(value);
-                })
-                    .catch(function (error) {
-                    console.log(error);
-                });
-                return [2 /*return*/];
+            var variable, _i, _a, post_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, json("./datapost.json").then(function (x) {
+                            return x;
+                        })];
+                    case 1:
+                        variable = _b.sent();
+                        console.log("----------------------------Current Posts-----------------------------");
+                        for (_i = 0, _a = variable.posts; _i < _a.length; _i++) {
+                            post_1 = _a[_i];
+                            console.log(post_1);
+                        }
+                        return [2 /*return*/];
+                }
             });
         });
     };

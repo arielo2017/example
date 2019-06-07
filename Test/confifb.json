@@ -1,0 +1,17 @@
+{
+    "user":
+    {"username":"kuleherman81@gmail.com",
+      "password":"arielo1985",
+      "email":"kuleherman81@gmail.com"
+    },
+    "url":"https://www.facebook.com/jinetescolombianos/posts/",
+    "repetition":60,
+    "emailstosend":
+    [{
+      "email":"ariel1985@gmail.com"
+    },
+    { 
+      "email":"vivianpocando@gmail.com"
+    }
+  ]
+}
