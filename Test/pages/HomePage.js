@@ -80,7 +80,7 @@ var HomePage = /** @class */ (function (_super) {
     }
     HomePage.prototype.ReadDataFromJson = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var variable, _i, _a, post_1;
+            var variable, _i, _a, post_1, other;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0: return [4 /*yield*/, json("./datapost.json").then(function (x) {
@@ -93,13 +93,22 @@ var HomePage = /** @class */ (function (_super) {
                             post_1 = _a[_i];
                             console.log(post_1);
                         }
+                        //read info fb
+                        console.log("----------------------------FB Configuration-----------------------------");
+                        return [4 /*yield*/, json("./configfb.json").then(function (data) {
+                                return data;
+                            })];
+                    case 2:
+                        other = _b.sent();
+                        console.log("user" + other.urlpost);
+                        this.url = other.urlpost;
                         return [2 /*return*/];
                 }
             });
         });
     };
     //Open browser
-    HomePage.prototype.OpenBrowser = function (url) {
+    HomePage.prototype.OpenBrowser = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -109,7 +118,7 @@ var HomePage = /** @class */ (function (_super) {
                         return [4 /*yield*/, protractor_1.browser.driver.manage().window().setSize(1600, 1000)];
                     case 2:
                         _a.sent();
-                        return [4 /*yield*/, protractor_1.browser.get(url)];
+                        return [4 /*yield*/, protractor_1.browser.get(this.url)];
                     case 3:
                         _a.sent();
                         return [2 /*return*/];

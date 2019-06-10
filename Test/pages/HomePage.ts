@@ -39,8 +39,11 @@ export class HomePage extends BasePage{
     password=this.ElementLocator(Locators.password);
      //login btn
     loginbtn=this.ElementLocator(Locators.loginbtn).element(by.tagName("input"));
+    //url
+    url:string;
 
     async ReadDataFromJson() {
+        //read current posts
         let variable=await json("./datapost.json").then(x => {
            return x;
         });
@@ -48,15 +51,24 @@ export class HomePage extends BasePage{
         for(let post of variable.posts){
             console.log(post);
         }
+        //read info fb
+        console.log("----------------------------FB Configuration-----------------------------");
+         let other=await json("./configfb.json").then(data => {
+            return data;
+         });
+         console.log("user"+other.urlpost);
+         this.url=other.urlpost;
+
     }
 
     //Open browser
-    async OpenBrowser(url:string){
+    async OpenBrowser(){
         await browser.waitForAngularEnabled(false);
         await browser.driver.manage().window().setSize(1600, 1000); 
-        await browser.get(url);
+        await browser.get(this.url);
 
     }
+    
 
     async Login()
     {

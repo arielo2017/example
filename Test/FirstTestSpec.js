@@ -38,6 +38,7 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var HomePage_1 = require("./pages/HomePage");
 var JinetesPage_1 = require("./pages/JinetesPage");
+var EmailUtils_1 = require("../utils/EmailUtils");
 describe("first part login and finding", function () {
     //Globally 
     var homePage = new HomePage_1.HomePage();
@@ -53,7 +54,7 @@ describe("first part login and finding", function () {
                     //read json
                     _a.sent();
                     //Open Browser
-                    return [4 /*yield*/, homePage.OpenBrowser("http://www.facebook.com")];
+                    return [4 /*yield*/, homePage.OpenBrowser()];
                 case 2:
                     //Open Browser
                     _a.sent();
@@ -72,7 +73,7 @@ describe("first part login and finding", function () {
             switch (_a.label) {
                 case 0: 
                 //search
-                return [4 /*yield*/, homePage.OpenBrowser("https://www.facebook.com/jinetescolombianos/posts/")];
+                return [4 /*yield*/, homePage.OpenBrowser()];
                 case 1:
                     //search
                     _a.sent();
@@ -86,7 +87,15 @@ describe("first part login and finding", function () {
     }); });
     it("send posts to json ", function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: 
+                //
+                return [4 /*yield*/, EmailUtils_1.EmailUtils.sendEmails(null)];
+                case 1:
+                    //
+                    _a.sent();
+                    return [2 /*return*/];
+            }
         });
     }); });
     it("update posts to json ", function () { return __awaiter(_this, void 0, void 0, function () {
