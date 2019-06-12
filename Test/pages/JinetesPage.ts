@@ -20,7 +20,7 @@ export class JinetesPage extends BasePage{
    // colposts=element.all(by.css("._5pcr.userContentWrapper")).$$("[data-testid='post_message']");
     datestext=element.all(by.css("._5pcr.userContentWrapper"));
 
-    colpostsArray: Post[] = [];
+    colpostsArray:Post[];
    
     async getPosts()
     {
@@ -61,11 +61,15 @@ export class JinetesPage extends BasePage{
              };
             
         });
+        
            
-        this.colpostsArray.forEach(element => {
+      /*  this.colpostsArray.forEach(element => {
             console.log("date:"+element.datepost);
             console.log("post:"+element.post);
-        });
+        });*/
+
+
+        
         
         return this.colpostsArray;
      }

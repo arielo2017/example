@@ -80,28 +80,21 @@ var HomePage = /** @class */ (function (_super) {
     }
     HomePage.prototype.ReadDataFromJson = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var variable, _i, _a, post_1, other;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, json("./datapost.json").then(function (x) {
-                            return x;
-                        })];
-                    case 1:
-                        variable = _b.sent();
-                        console.log("----------------------------Current Posts-----------------------------");
-                        for (_i = 0, _a = variable.posts; _i < _a.length; _i++) {
-                            post_1 = _a[_i];
-                            console.log(post_1);
-                        }
+            var other;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
                         //read info fb
                         console.log("----------------------------FB Configuration-----------------------------");
                         return [4 /*yield*/, json("./configfb.json").then(function (data) {
                                 return data;
                             })];
-                    case 2:
-                        other = _b.sent();
-                        console.log("user" + other.urlpost);
+                    case 1:
+                        other = _a.sent();
                         this.url = other.urlpost;
+                        this.usernamejson = other.user.username;
+                        this.passwordjson = other.user.password;
+                        console.log("url:" + this.url);
                         return [2 /*return*/];
                 }
             });
@@ -132,10 +125,10 @@ var HomePage = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         console.log("Login");
-                        return [4 /*yield*/, this.username.sendKeys("kuleherman81@gmail.com")];
+                        return [4 /*yield*/, this.username.sendKeys(this.usernamejson)];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.password.sendKeys("arielo1985")];
+                        return [4 /*yield*/, this.password.sendKeys(this.passwordjson)];
                     case 2:
                         _a.sent();
                         return [4 /*yield*/, this.loginbtn.click()];

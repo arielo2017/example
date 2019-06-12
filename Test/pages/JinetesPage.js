@@ -64,7 +64,6 @@ var JinetesPage = /** @class */ (function (_super) {
         _this.dates = _this.ElementLocator(Locators.dates);
         // colposts=element.all(by.css("._5pcr.userContentWrapper")).$$("[data-testid='post_message']");
         _this.datestext = protractor_1.element.all(protractor_1.by.css("._5pcr.userContentWrapper"));
-        _this.colpostsArray = [];
         return _this;
     }
     JinetesPage.prototype.getPosts = function () {
@@ -104,10 +103,10 @@ var JinetesPage = /** @class */ (function (_super) {
                             })];
                     case 1:
                         _a.colpostsArray = _b.sent();
-                        this.colpostsArray.forEach(function (element) {
-                            console.log("date:" + element.datepost);
-                            console.log("post:" + element.post);
-                        });
+                        /*  this.colpostsArray.forEach(element => {
+                              console.log("date:"+element.datepost);
+                              console.log("post:"+element.post);
+                          });*/
                         return [2 /*return*/, this.colpostsArray];
                 }
             });

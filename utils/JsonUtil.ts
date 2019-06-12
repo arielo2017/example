@@ -1,22 +1,44 @@
+import { Post } from "../DTO/Posts";
 
-const data: {[key: string]: any} = require('../utils/JsonUtil');
+const json = require('load-json-file');
+
+
+const data = JSON.parse("./datapost.json");
 
 export class JsonUtil
 {
-
-    static ReadJson(): any
-    {
-        var fs = require('fs');
-        // Read the file, and pass it to your callback
-        fs.readFile("../Test/datapost.json", handleJSONFile);
-        var handleJSONFile = function (err, data) {
-            if (err) {
-                throw err;
-            }
-           
-        }
-        return data;
-    }
+    //let variable:Post[];
     
+    static async readJsonPosts()
+    {
+      
+       console.log("----------------------------Current Posts-------------------------------");
+      //  variable = JSON.parse("./datapost.json");
+       //read current posts
+     /*   let variable= await  json("./datapost.json").then( x=> {
+            console.log(x);
+            return x;
+     });
+     console.log("lenght:"+variable.length);
+     for(let post of variable){
+         console.log(post);
+     }*/
+
+     let variable = JSON.stringify("./datapost.json");
+     console.log(variable);
+
+     return variable;
+    }
+   
 }
+
+interface MyObj {
+    date: any
+    post: any
+  }
+  
+  interface MyRootObj {
+    string: MyObj[];
+  }
+  
 

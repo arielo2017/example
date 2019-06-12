@@ -39,10 +39,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var HomePage_1 = require("./pages/HomePage");
 var JinetesPage_1 = require("./pages/JinetesPage");
 var EmailUtils_1 = require("../utils/EmailUtils");
+var JsonUtil_1 = require("../utils/JsonUtil");
 describe("first part login and finding", function () {
     //Globally 
     var homePage = new HomePage_1.HomePage();
     var jinetePage = new JinetesPage_1.JinetesPage();
+    var coleccion;
+    var postsold;
     // var newsPage = new NewsPage();
     it("login succesfully", function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -68,7 +71,6 @@ describe("first part login and finding", function () {
         });
     }); });
     it("return posts", function () { return __awaiter(_this, void 0, void 0, function () {
-        var coleccion;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: 
@@ -79,8 +81,19 @@ describe("first part login and finding", function () {
                     _a.sent();
                     return [4 /*yield*/, jinetePage.getTodayPosts()];
                 case 2:
+                    //click posts
                     coleccion = _a.sent();
                     expect(coleccion.length).toBeGreaterThan(0);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it("compare date posts ", function () { return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, JsonUtil_1.JsonUtil.readJsonPosts()];
+                case 1:
+                    postsold = _a.sent();
                     return [2 /*return*/];
             }
         });

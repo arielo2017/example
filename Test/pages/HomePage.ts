@@ -41,24 +41,21 @@ export class HomePage extends BasePage{
     loginbtn=this.ElementLocator(Locators.loginbtn).element(by.tagName("input"));
     //url
     url:string;
-
+    //userstring
+    usernamejson:string;
+    //passstring
+    passwordjson:string;
     async ReadDataFromJson() {
-        //read current posts
-        let variable=await json("./datapost.json").then(x => {
-           return x;
-        });
-        console.log("----------------------------Current Posts-----------------------------");
-        for(let post of variable.posts){
-            console.log(post);
-        }
+        
         //read info fb
         console.log("----------------------------FB Configuration-----------------------------");
          let other=await json("./configfb.json").then(data => {
             return data;
          });
-         console.log("user"+other.urlpost);
          this.url=other.urlpost;
-
+         this.usernamejson=other.user.username;
+         this.passwordjson=other.user.password;
+         console.log("url:"+this.url);
     }
 
     //Open browser
@@ -73,8 +70,8 @@ export class HomePage extends BasePage{
     async Login()
     {
         console.log("Login");
-        await this.username.sendKeys("kuleherman81@gmail.com");
-        await this.password.sendKeys("arielo1985");
+        await this.username.sendKeys(this.usernamejson);
+        await this.password.sendKeys(this.passwordjson);
         await this.loginbtn.click();
     }    
 }
