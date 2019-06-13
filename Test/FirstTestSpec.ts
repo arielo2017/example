@@ -5,7 +5,11 @@ import { JinetesPage } from "./pages/JinetesPage";
 import { async } from "q";
 import {EmailUtils } from "../utils/EmailUtils";
 import { JsonUtil } from "../utils/JsonUtil";
+import { Post } from "../DTO/Posts";
 
+
+
+const fs = require('fs');
 
 describe("first part login and finding", () => {
 
@@ -13,7 +17,7 @@ describe("first part login and finding", () => {
     var homePage = new HomePage();
     var jinetePage = new JinetesPage();
     var coleccion;
-    var postsold;
+   
 
    // var newsPage = new NewsPage();
     it("login succesfully", async () => {      
@@ -38,12 +42,16 @@ describe("first part login and finding", () => {
 
       it("compare date posts ", async () => {
         
-        postsold= await JsonUtil.readJsonPosts();
-     
+       // let postsold:Post[]= await JsonUtil.readJsonPosts();
        
-      /*  console.log("--------------------------Posts-----------------------------");
-        console.log(coleccion);
-        var newposts=await EmailUtils.getNewPosts(postsold,coleccion);*/
+        let rawdata =  await fs.readFileSync("./datapost.json");  
+        let variable:Post[] = await JSON.parse(rawdata);  
+
+        console.log("----------------------------Current Posts-------------------------------");
+        console.log( variable);
+        console.log("--------------------------Posts FB-----------------------------");
+        console.log(await coleccion);
+        var newposts= EmailUtils.getNewPosts(variable,coleccion);
        
       })
 

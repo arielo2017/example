@@ -62,14 +62,7 @@ export class JinetesPage extends BasePage{
             
         });
         
-           
-      /*  this.colpostsArray.forEach(element => {
-            console.log("date:"+element.datepost);
-            console.log("post:"+element.post);
-        });*/
-
-
-        
+             
         
         return this.colpostsArray;
      }

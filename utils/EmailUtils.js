@@ -35,6 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var fs = require('fs');
 var EmailUtils = /** @class */ (function () {
     function EmailUtils() {
     }
@@ -42,29 +43,44 @@ var EmailUtils = /** @class */ (function () {
     };
     EmailUtils.getNewPosts = function (listold, listnew) {
         return __awaiter(this, void 0, void 0, function () {
-            var finalarray, index, element, index, element;
-            return __generator(this, function (_a) {
-                console.log("----------------Comparison--------------");
-                finalarray = [];
-                console.log("old:" + listold.length);
-                for (index = 0; index < listold.length; index++) {
-                    element = listold[index];
-                    console.log(element);
+            var finalarray, _a, _b, _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
+                    case 0:
+                        console.log("----------------Comparison--------------");
+                        finalarray = [];
+                        return [4 /*yield*/, listold.forEach(function (element) {
+                                console.log("old:" + element);
+                            })];
+                    case 1:
+                        _d.sent();
+                        _b = (_a = console).log;
+                        _c = "old:";
+                        return [4 /*yield*/, listold];
+                    case 2:
+                        _b.apply(_a, [_c + (_d.sent())]);
+                        console.log("new:" + listnew.length);
+                        /* for (let index = 0; index < listold.length; index++) {
+                             const element = listold[index];
+                             console.log(element);
+                             
+                         }
+                          console.log("new");
+                          for (let index = 0; index < listnew.length; index++) {
+                              const element = listnew[index];
+                              console.log(element);
+                              
+                          }*/
+                        /*listnew.forEach((e1)=>listold.forEach((e2)=>
+                        {
+                            console.log("old date:"+e1.date);
+                            console.log("new date:"+e2.date);
+                        }*/
+                        //    let missing = listnew.filter(item => listold.indexOf(item) < 0);
+                        console.log("final array");
+                        console.log(finalarray);
+                        return [2 /*return*/];
                 }
-                console.log("new");
-                for (index = 0; index < listnew.length; index++) {
-                    element = listnew[index];
-                    console.log(element);
-                }
-                /*listnew.forEach((e1)=>listold.forEach((e2)=>
-                {
-                    console.log("old date:"+e1.date);
-                    console.log("new date:"+e2.date);
-                }*/
-                //    let missing = listnew.filter(item => listold.indexOf(item) < 0);
-                console.log("final array");
-                console.log(finalarray);
-                return [2 /*return*/];
             });
         });
     };

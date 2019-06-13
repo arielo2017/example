@@ -1,4 +1,7 @@
 import { Post } from "../DTO/Posts";
+import { JsonUtil } from "../utils/JsonUtil";
+
+const fs = require('fs');
 
 export class EmailUtils
 {
@@ -12,10 +15,17 @@ export class EmailUtils
 
     static async  getNewPosts(listold:Post[],listnew:Post[])
     {
-        console.log("----------------Comparison--------------");
+       
+
+       console.log("----------------Comparison--------------");
         let finalarray=[];
-        console.log("old:"+listold.length);
-       for (let index = 0; index < listold.length; index++) {
+
+       await listold.forEach(element => {
+        console.log("old:"+ element);
+        });
+        console.log("old:"+await listold);
+        console.log("new:"+listnew.length);
+      /* for (let index = 0; index < listold.length; index++) {
            const element = listold[index];
            console.log(element);
            
@@ -25,7 +35,7 @@ export class EmailUtils
             const element = listnew[index];
             console.log(element);
             
-        }
+        }*/
 
         /*listnew.forEach((e1)=>listold.forEach((e2)=>
         {

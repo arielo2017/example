@@ -103,10 +103,6 @@ var JinetesPage = /** @class */ (function (_super) {
                             })];
                     case 1:
                         _a.colpostsArray = _b.sent();
-                        /*  this.colpostsArray.forEach(element => {
-                              console.log("date:"+element.datepost);
-                              console.log("post:"+element.post);
-                          });*/
                         return [2 /*return*/, this.colpostsArray];
                 }
             });

@@ -36,19 +36,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var json = require('load-json-file');
-var data = JSON.parse("./datapost.json");
+var fs = require('fs');
 var JsonUtil = /** @class */ (function () {
     function JsonUtil() {
     }
-    //let variable:Post[];
     JsonUtil.readJsonPosts = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var variable;
+            var rawdata, variable;
             return __generator(this, function (_a) {
-                console.log("----------------------------Current Posts-------------------------------");
-                variable = JSON.stringify("./datapost.json");
-                console.log(variable);
-                return [2 /*return*/, variable];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fs.readFileSync("./datapost.json")];
+                    case 1:
+                        rawdata = _a.sent();
+                        return [4 /*yield*/, JSON.parse(rawdata)];
+                    case 2:
+                        variable = _a.sent();
+                        return [2 /*return*/, variable];
+                }
             });
         });
     };

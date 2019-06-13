@@ -39,13 +39,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var HomePage_1 = require("./pages/HomePage");
 var JinetesPage_1 = require("./pages/JinetesPage");
 var EmailUtils_1 = require("../utils/EmailUtils");
-var JsonUtil_1 = require("../utils/JsonUtil");
+var fs = require('fs');
 describe("first part login and finding", function () {
     //Globally 
     var homePage = new HomePage_1.HomePage();
     var jinetePage = new JinetesPage_1.JinetesPage();
     var coleccion;
-    var postsold;
     // var newsPage = new NewsPage();
     it("login succesfully", function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -89,11 +88,23 @@ describe("first part login and finding", function () {
         });
     }); });
     it("compare date posts ", function () { return __awaiter(_this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, JsonUtil_1.JsonUtil.readJsonPosts()];
+        var rawdata, variable, _a, _b, newposts;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0: return [4 /*yield*/, fs.readFileSync("./datapost.json")];
                 case 1:
-                    postsold = _a.sent();
+                    rawdata = _c.sent();
+                    return [4 /*yield*/, JSON.parse(rawdata)];
+                case 2:
+                    variable = _c.sent();
+                    console.log("----------------------------Current Posts-------------------------------");
+                    console.log(variable);
+                    console.log("--------------------------Posts FB-----------------------------");
+                    _b = (_a = console).log;
+                    return [4 /*yield*/, coleccion];
+                case 3:
+                    _b.apply(_a, [_c.sent()]);
+                    newposts = EmailUtils_1.EmailUtils.getNewPosts(variable, coleccion);
                     return [2 /*return*/];
             }
         });
