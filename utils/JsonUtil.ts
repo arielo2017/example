@@ -9,9 +9,7 @@ export class JsonUtil
     
     static async readJsonPosts()
     {
-  
-      
-      
+       
       //read current posts
 
         //read current posts

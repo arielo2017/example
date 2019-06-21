@@ -2,7 +2,7 @@
 export class Post
 {
     private _datepost: any;
-    private _post: string;
+    private _post: String;
     public get datepost(): any {
         return this._datepost;
     }
@@ -10,14 +10,14 @@ export class Post
         this._datepost = value;
     }
   
-    public get post(): string {
+    public get post(): String {
         return this._post;
     }
-    public set post(value: string) {
+    public set post(value: String) {
         this._post = value;
     }
 
-    constructor(datepost:any,post:string)
+    constructor(datepost:any,post:String)
     {
         this._datepost=datepost;
     }    

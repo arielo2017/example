@@ -4,6 +4,7 @@ import { JsonUtil } from "../../utils/JsonUtil";
 import { post } from "selenium-webdriver/http";
 
 import { JsonDecoder } from 'ts.data.json';
+import { Post } from "../../DTO/Posts";
 
 const Locators={
 
@@ -45,6 +46,8 @@ export class HomePage extends BasePage{
     usernamejson:string;
     //passstring
     passwordjson:string;
+    //posts colection
+    postsold:Post[];
     async ReadDataFromJson() {
         
         //read info fb
@@ -56,6 +59,11 @@ export class HomePage extends BasePage{
          this.usernamejson=other.user.username;
          this.passwordjson=other.user.password;
          console.log("url:"+this.url);
+         let other2=await json("./datapost.json").then(data => {
+            return data;
+         });
+         this.postsold=other2.posts;
+         console.log("posts:"+this.postsold);
     }
 
     //Open browser

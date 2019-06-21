@@ -35,52 +35,46 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs = require('fs');
+var sendmail = require('sendmail')();
 var EmailUtils = /** @class */ (function () {
     function EmailUtils() {
     }
     EmailUtils.sendEmails = function (list) {
+        sendmail({
+            from: 'ariel1985@gmail.com',
+            to: 'ariel1985@gmail.com,vivianpocado@gmail.com',
+            //  replyTo: 'vivianpocado@gmail.com',
+            subject: 'Mail Composer sendmail',
+            html: 'Mail of test sendmail'
+        }, function (err, reply) {
+            console.log(err && err.stack);
+            console.dir(reply);
+        });
     };
     EmailUtils.getNewPosts = function (listold, listnew) {
         return __awaiter(this, void 0, void 0, function () {
-            var finalarray, _a, _b, _c;
-            return __generator(this, function (_d) {
-                switch (_d.label) {
-                    case 0:
-                        console.log("----------------Comparison--------------");
-                        finalarray = [];
-                        return [4 /*yield*/, listold.forEach(function (element) {
-                                console.log("old:" + element);
-                            })];
-                    case 1:
-                        _d.sent();
-                        _b = (_a = console).log;
-                        _c = "old:";
-                        return [4 /*yield*/, listold];
-                    case 2:
-                        _b.apply(_a, [_c + (_d.sent())]);
-                        console.log("new:" + listnew.length);
-                        /* for (let index = 0; index < listold.length; index++) {
-                             const element = listold[index];
-                             console.log(element);
-                             
-                         }
-                          console.log("new");
-                          for (let index = 0; index < listnew.length; index++) {
-                              const element = listnew[index];
-                              console.log(element);
-                              
-                          }*/
-                        /*listnew.forEach((e1)=>listold.forEach((e2)=>
-                        {
-                            console.log("old date:"+e1.date);
-                            console.log("new date:"+e2.date);
-                        }*/
-                        //    let missing = listnew.filter(item => listold.indexOf(item) < 0);
-                        console.log("final array");
-                        console.log(finalarray);
-                        return [2 /*return*/];
+            var finalarray, index, element, index, element, postconcat, indexpost, elementemp;
+            return __generator(this, function (_a) {
+                console.log("----------------Comparison--------------");
+                finalarray = [];
+                for (index = 0; index < listold.length; index++) {
+                    element = listold[index];
+                    console.log(element);
                 }
+                console.log("new");
+                for (index = 0; index < listnew.length; index++) {
+                    element = listnew[index];
+                    postconcat = "";
+                    for (indexpost = 0; indexpost < element.post.length; indexpost++) {
+                        elementemp = element.post[indexpost];
+                        postconcat += elementemp;
+                    }
+                    element.post = postconcat.toString();
+                    listnew[index] = element;
+                    console.log("new element:" + listnew[index].post);
+                }
+                //in the meantime send the new posts by day    
+                return [2 /*return*/, listnew];
             });
         });
     };

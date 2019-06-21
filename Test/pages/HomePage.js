@@ -80,7 +80,7 @@ var HomePage = /** @class */ (function (_super) {
     }
     HomePage.prototype.ReadDataFromJson = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var other;
+            var other, other2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -95,6 +95,13 @@ var HomePage = /** @class */ (function (_super) {
                         this.usernamejson = other.user.username;
                         this.passwordjson = other.user.password;
                         console.log("url:" + this.url);
+                        return [4 /*yield*/, json("./datapost.json").then(function (data) {
+                                return data;
+                            })];
+                    case 2:
+                        other2 = _a.sent();
+                        this.postsold = other2.posts;
+                        console.log("posts:" + this.postsold);
                         return [2 /*return*/];
                 }
             });
