@@ -6,7 +6,7 @@ import { compose } from "nativescript-email";
 const sendmail = require('sendmail')();
 
 export class EmailUtils
-{
+{       
 
     static sendEmails(list:any[]): any
     {
