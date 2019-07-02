@@ -41,7 +41,7 @@ var EmailUtils = /** @class */ (function () {
     }
     EmailUtils.sendEmails = function (list) {
         sendmail({
-            from: 'ariel1985@gmail.com',
+            from: 'kuleherman81@gmail.com',
             to: 'ariel1985@gmail.com,vivianpocado@gmail.com',
             //  replyTo: 'vivianpocado@gmail.com',
             subject: 'Mail Composer sendmail',
