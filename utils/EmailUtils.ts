@@ -2,26 +2,37 @@ import { Post } from "../DTO/Posts";
 import { JsonUtil } from "../utils/JsonUtil";
 import { post } from "selenium-webdriver/http";
 import { compose } from "nativescript-email";
-
-const sendmail = require('sendmail')();
+import * as nodemailer from 'nodemailer'
 
 export class EmailUtils
 {       
 
-    static sendEmails(list:any[]): any
+    static async sendEmails(list:Post[])
     {
-        sendmail({
-            from: 'kuleherman81@gmail.com',
-            to: 'ariel1985@gmail.com,vivianpocado@gmail.com',
-          //  replyTo: 'vivianpocado@gmail.com',
-            subject: 'Mail Composer sendmail',
-            html: 'Mail of test sendmail'
-          }, function (err, reply) {
-            console.log(err && err.stack)
-            console.dir(reply)
-          })        
-        
+      let transporter: nodemailer.Transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'kuleherman81@gmail.com',
+            pass: 'arielo1985'
+        }
+    });
+
+    // setup e-mail data with unicode symbols
+    let mailOptions:  nodemailer.SendMailOptions = {
+      from: 'kuleherman81@gmail.com', // sender address
+      to: 'ariel1985@gmail.com, vivianpcoando@gmail.com', // list of receivers
+      subject: 'Posts De FB jinetes en el exterior ✔', // Subject line
+    //  text: 'Hello world ✔', // plaintext body
+      html: '<b>Hello world ✔</b>' // html body
+    };
+    
+    
+    // promise send mail without callback
+   await transporter
+    .sendMail(mailOptions)
+    .then(info => info.messageId)
     }
+
     
 
     static async  getNewPosts(listold:Post[],listnew:Post[])

@@ -35,20 +35,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var sendmail = require('sendmail')();
+var nodemailer = require("nodemailer");
 var EmailUtils = /** @class */ (function () {
     function EmailUtils() {
     }
     EmailUtils.sendEmails = function (list) {
-        sendmail({
-            from: 'kuleherman81@gmail.com',
-            to: 'ariel1985@gmail.com,vivianpocado@gmail.com',
-            //  replyTo: 'vivianpocado@gmail.com',
-            subject: 'Mail Composer sendmail',
-            html: 'Mail of test sendmail'
-        }, function (err, reply) {
-            console.log(err && err.stack);
-            console.dir(reply);
+        return __awaiter(this, void 0, void 0, function () {
+            var transporter, mailOptions;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        transporter = nodemailer.createTransport({
+                            service: 'Gmail',
+                            auth: {
+                                user: 'kuleherman81@gmail.com',
+                                pass: 'arielo1985'
+                            }
+                        });
+                        mailOptions = {
+                            from: 'kuleherman81@gmail.com',
+                            to: 'ariel1985@gmail.com, vivianpcoando@gmail.com',
+                            subject: 'Posts De FB jinetes en el exterior ✔',
+                            //  text: 'Hello world ✔', // plaintext body
+                            html: '<b>Hello world ✔</b>' // html body
+                        };
+                        // promise send mail without callback
+                        return [4 /*yield*/, transporter
+                                .sendMail(mailOptions)
+                                .then(function (info) { return info.messageId; })];
+                    case 1:
+                        // promise send mail without callback
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     EmailUtils.getNewPosts = function (listold, listnew) {

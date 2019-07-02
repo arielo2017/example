@@ -22,6 +22,7 @@
     "geckodriver": "^1.16.2",
     "jasminewd2": "^2.2.0",
     "nativescript-email": "^1.5.3",
+    "nodemailer": "^6.2.1",
     "selenium-webdriver": "^4.0.0-alpha.1",
     "sendmail": "^1.4.1",
     "tns": "^0.2.0",
