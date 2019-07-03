@@ -41,7 +41,7 @@ var EmailUtils = /** @class */ (function () {
     }
     EmailUtils.sendEmails = function (list) {
         return __awaiter(this, void 0, void 0, function () {
-            var transporter, mailOptions;
+            var transporter, message, index, mailOptions;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -52,12 +52,17 @@ var EmailUtils = /** @class */ (function () {
                                 pass: 'arielo1985'
                             }
                         });
+                        message = "";
+                        console.log("list" + list.length);
+                        for (index = 0; index < list.length; index++) {
+                            message += "<b>" + list[index].datepost + "<br><b>" + list[index].post + "<b><br><br>";
+                        }
                         mailOptions = {
                             from: 'kuleherman81@gmail.com',
-                            to: 'ariel1985@gmail.com, vivianpcoando@gmail.com',
+                            to: 'ariel1985@gmail.com,vivianpocando@gmail.com,mariacamilagomezp1@gmail.com',
                             subject: 'Posts De FB jinetes en el exterior ✔',
-                            //  text: 'Hello world ✔', // plaintext body
-                            html: '<b>Hello world ✔</b>' // html body
+                            text: 'Post FB Jinetes en el exterior',
+                            html: message // html body
                         };
                         // promise send mail without callback
                         return [4 /*yield*/, transporter

@@ -17,13 +17,21 @@ export class EmailUtils
         }
     });
 
+    let message="";
+    console.log("list"+list.length);
+    for (let index = 0; index < list.length; index++) {
+      message+="<b>"+list[index].datepost+"<br><b>"+list[index].post+"<b><br><br>";
+    }
+
+
+
     // setup e-mail data with unicode symbols
     let mailOptions:  nodemailer.SendMailOptions = {
       from: 'kuleherman81@gmail.com', // sender address
-      to: 'ariel1985@gmail.com, vivianpcoando@gmail.com', // list of receivers
+      to: 'ariel1985@gmail.com,vivianpocando@gmail.com,mariacamilagomezp1@gmail.com', // list of receivers
       subject: 'Posts De FB jinetes en el exterior ✔', // Subject line
-    //  text: 'Hello world ✔', // plaintext body
-      html: '<b>Hello world ✔</b>' // html body
+      text: 'Post FB Jinetes en el exterior', // plaintext body
+      html: message // html body
     };
     
     
