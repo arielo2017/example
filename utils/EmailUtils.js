@@ -78,14 +78,10 @@ var EmailUtils = /** @class */ (function () {
     };
     EmailUtils.getNewPosts = function (listold, listnew) {
         return __awaiter(this, void 0, void 0, function () {
-            var finalarray, index, element, index, element, postconcat, indexpost, elementemp;
+            var finalarray, index, element, postconcat, indexpost, elementemp;
             return __generator(this, function (_a) {
                 console.log("----------------Comparison--------------");
                 finalarray = [];
-                for (index = 0; index < listold.length; index++) {
-                    element = listold[index];
-                    console.log(element);
-                }
                 console.log("new");
                 for (index = 0; index < listnew.length; index++) {
                     element = listnew[index];

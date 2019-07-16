@@ -50,11 +50,6 @@ export class EmailUtils
        console.log("----------------Comparison--------------");
        let finalarray=[];
        
-       for (let index = 0; index < listold.length; index++) {
-           const element = listold[index];
-           console.log(element);
-           
-       }
         console.log("new");
         for (let index = 0; index < listnew.length; index++) {
             const element:Post = listnew[index];

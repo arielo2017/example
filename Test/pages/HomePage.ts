@@ -59,11 +59,7 @@ export class HomePage extends BasePage{
          this.usernamejson=other.user.username;
          this.passwordjson=other.user.password;
          console.log("url:"+this.url);
-         let other2=await json("./datapost.json").then(data => {
-            return data;
-         });
-         this.postsold=other2.posts;
-         console.log("posts:"+this.postsold);
+        
     }
 
     //Open browser
